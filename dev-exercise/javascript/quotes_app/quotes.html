@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>q u o t a b l e</title>
+  <link rel="stylesheet" type="text/css" href="./quotes.css">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Raleway&display=swap" rel="stylesheet">
+  <script src="src/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header class="header shadow">
+      <span class="header quote-mark">“</span><h1>q u o t a b l e</h1>
+    </header>
+    <blockquote v-if="highlightedQuote" class="highlighted-quote shadow">
+      {{ highlightedQuote.quote }} 
+      <div> {{ highlightedQuote.source }} <span class='context'>{{ highlightedQuote.context }}</span></div>
+    </blockquote>
+
+    <main class="quotes-container">
+      <div class="quotes-filter">
+        <select @change="filterByTheme" class="shadow">
+          <option disabled value="">filter by theme</option>
+          <option value="all">all</option>
+          <option value="games">games</option>
+          <option value="movies">movies</option>
+          <option value="tv">tv</option>
+        </select>
+
+        <input v-model="searchTerm" placeholder="enter keyword(s)" class="shadow"></input>
+      </div>
+      <div v-if="visibleQuotes.length" class="quotes-list">
+        <div
+          :class="['card', 'quote-' + (i + 1), 'shadow', { highlighted: selectedQuoteId === quote.id }]"
+          :id="quote.id"
+          v-for="(quote, i) in visibleQuotes" 
+          @click="selectedQuoteId = quote.id"
+        >
+          <span class="text-preview">{{ quote.quote.slice(0, 70) }} </span>
+        </div>
+      </div>
+      <div v-else class="no-results quotes-list">Sorry! No quotes match your search criteria.</div>
+    </main>
+
+    <footer class="footer pagination">
+      <ul>
+        <li
+          :class="['page', 'shadow', { selected: currentPage === page }, colorOrder[index]]"
+          :id="index + 1"
+          v-for="(page, index) in pagination" 
+          @click="currentPage = index + 1"
+        >
+          {{ page }}
+        </li>
+      </ul>
+    </footer>
+  </div> 
+  <script src="src/app.js"></script>
+</body>
+</html>

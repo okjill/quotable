@@ -1,0 +1,285 @@
+html {
+  height: 100%;
+  margin: 0 auto;
+}
+
+body { 
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+blockquote {
+  background-color: white;
+  border-left: 9px solid var(--highlight-color);
+  color: #555555;
+  font-family: Abril Fatface;
+  font-size: 1.7em;
+  grid-area: highlighted-quote;
+  line-height: 1.6;
+  margin: 50px auto;
+  padding: 1.2em 30px 1.2em 75px;
+  position: relative;
+}
+
+blockquote::before {
+  color: var(--highlight-color);
+  content: "\201C";
+  font-family: Abril Fatface;
+  font-size: 4em;
+  left: 10px;
+  position: absolute;
+  top: -10px;
+}
+
+blockquote::after {
+  content: '';
+}
+
+blockquote div {
+  color: #555555;
+  display: block;
+  font: normal 0.7em 'Raleway', sans-serif;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+input {
+  font: inherit;
+}
+
+select {
+  font: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  grid-template-rows: 70px 1fr 100px;
+  gap: 1px 1px;
+  grid-template-areas: "header header" "quotes-container highlighted-quote" "footer footer";
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  color: #555555;
+  text-align: center;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: translate3D(0,-1px,0) scale(1.05);
+}
+
+.context {
+  display: inline;
+  font-style: italic;
+}
+
+.footer { 
+  bottom: 0;
+  grid-area: footer;
+  position: absolute; 
+  width: 100%; 
+}
+
+.header { 
+  background-color: var(--marigold);
+  display: flex;
+  grid-area: header;
+}
+
+.header.quote-mark {
+  background-color: white;
+  color: var(--marigold);
+  flex: 0 1 auto;
+  font-family: Abril Fatface;
+  font-size: 5em;
+  padding: 0 1%;
+}
+
+.header > h1 {
+  color: white;
+  flex: 1 1 auto;
+  font-size: 2em;
+  padding-left: 1%;
+}
+
+.highlighted {
+  border-bottom: 10px solid var(--highlight-color);
+}
+
+.highlighted-quote {
+  align-items: center;
+  grid-area: highlighted-quote;
+  justify-content: center;
+  margin: 3%;
+}
+
+.no-results {
+  color: var(--red-orange);
+}
+
+.pagination ul {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination li {
+  color: white;
+  font-size: 1.3em;
+  padding: 1%;
+  text-align: center;
+  width: 10%;
+}
+
+.pagination li:hover {
+  cursor: pointer;
+  transform: translate3D(0,-1px,0) scale(1.05);
+}
+
+.pagination li.selected {
+  font-size: 1.7em;
+  font-weight: bold;
+  transform: translate3D(0,-1px,0) scale(1.05);
+}
+
+.quotes-container {
+  display: grid;
+  gap: 1px 1px;
+  grid-area: quotes-container;
+  grid-template-areas: "quotes-filter" "quotes-list" ;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.3fr 1fr;
+}
+
+.quotes-filter {
+  grid-area: quotes-filter; 
+  margin: 3%;
+}
+
+.quotes-filter > select {
+  align-self: start;
+  border: none;
+  margin: 1%;
+}
+
+.quotes-filter > input {
+  align-self: end;
+  border: none;
+  margin: 1%;
+}
+
+.quotes-list {
+  display: grid;
+  gap: 1px 1px;
+  grid-area: quotes-list;
+  grid-gap: 30px;
+  grid-template-areas: "quote-1 quote-2 quote-3" "quote-4 quote-5 quote-6" "quote-7 quote-8 quote-9";
+  grid-template-columns: repeat(3, 15vw);
+  grid-template-rows: repeat(3, 10vh);
+  margin: 3%;
+}
+
+.quote-1 {
+  grid-area: quote-1;
+}
+
+.quote-2 { grid-area: quote-2; }
+
+.quote-3 { grid-area: quote-3; }
+
+.quote-4 { grid-area: quote-4; }
+
+.quote-5 { grid-area: quote-5; }
+
+.quote-6 { grid-area: quote-6; }
+
+.quote-7 { grid-area: quote-7; }
+
+.quote-8 { grid-area: quote-8; }
+
+.quote-9 { grid-area: quote-9; }
+
+.shadow {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.text-preview {
+  -webkit-line-clamp: 3;
+  display: block;
+  overflow: hidden;
+  padding: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* @supports (-webkit-line-clamp: 3) {
+  .text-preview {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+} */
+
+/* color background classes */
+.beige {
+  background-color: var(--beige);
+}
+
+.blue {
+  background-color: var(--blue);
+}
+
+.green {
+  background-color: var(--green);
+}
+
+.light-blue {
+  background-color: var(--light-blue);
+}
+
+.marigold {
+  background-color: var(--marigold);
+}
+
+.orange {
+  background-color: var(--orange);
+}
+
+.pink {
+  background-color: var(--pink);
+}
+
+.purple {
+  background-color: var(--purple);
+}
+
+.red-orange {
+  background-color: var(--red-orange);
+}
+
+/* color variables */
+:root {
+  --beige: #EBD8C7;
+  --blue: #0071A0;
+  --dark-blue: #001F3F;
+  --green: #399A8F;
+  --gold: #D6A445;
+  --light-blue: #4DAFDA;
+  --marigold:  #FF9814;
+  --orange: #FF7417;
+  --pink: #E66F63;
+  --purple: #B1768B;
+  --red-orange: #F44529;
+  --highlight-color: var(--highlight-color);
+  }
